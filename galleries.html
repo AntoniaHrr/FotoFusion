@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galleries</title>
+    <link rel="stylesheet" href="./styles/galleries.css" />
+</head>
+<body>
+    <header>
+        <div class="left">
+            <h1>FotoFusion</h1>
+            <label id="dashboard-label" for="menu">Dashboard</label>
+            <ul class="dropdown">
+                <li>
+                    <ul class="dropdown-options" id="dropdown-options">
+                        <li>
+                            <a href="">
+                                <div class="menu-item">
+                                    <img src="./styles/photo-gallery.png" alt="img" />
+                                    <div class="column">
+                                        <div><span>My galleries</span></div>
+                                        <span>View</span>
+                                        <span>Edit</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <div class="menu-item">
+                                    <img src="./styles/explore-gallery.png" alt="img" />
+                                    <div class="column">
+                                        <div><span>Explore</span></div>
+                                        <span>View</span>
+                                        <span>Search</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <div class="menu-item">
+                                    <img src="./styles/girl.png" alt="img" />
+                                    <div class="column">
+                                        <div><span>Profile</span></div>
+                                        <span>View</span>
+                                        <span>Edit</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="sidebar">
+        <input type="text" placeholder="Search...">
+    </div>
+    <div>
+        <h1>Galleries</h1>
+    </div>
+    <main>
+        <div class="gallery-container">
+            <div class="gallery" id="main-gallery">
+                <div class="header">
+                    <h2>Main</h2>
+                    <button onclick="addPhoto('main-gallery')">Add Photo</button>
+                </div>
+                <div class="image-container">
+                    <img src="./styles/gallery.jpg" alt="Placeholder Image" id="main-image">
+                    <button class="view-button" onclick="viewGallery()">View</button>
+                </div>
+            </div>
+            <div class="gallery" id="add-gallery">
+                <button onclick="addGallery()">+</button>
+            </div>
+        </div>
+    </main>
+    <script src="./js/galleries.js"></script>
+</body>
+</html>

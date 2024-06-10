@@ -1,0 +1,143 @@
+@import url("./navbar.css");
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.profile-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    background-color: white;
+    overflow: hidden;
+    height: calc(100vh - 80px); /* Header height is 80px */
+}
+
+.profile-left {
+    padding: 20px;
+    background-color: #fafafa;
+    width: 50%; /* Take half of the container width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.image-container {
+    width: 100%;
+    max-width: 500px; /* Set the max width for the image container */
+    position: relative;
+    padding-top: 100%; /* Maintain square aspect ratio */
+    margin-bottom: 20px;
+}
+
+.profile-picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.username {
+    margin: 10px 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.fullname {
+    margin: 5px 0;
+    font-size: 18px;
+    color: #777;
+}
+
+.profile-right {
+    padding: 20px;
+    width: 50%; /* Take half of the container width */
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.profile-right h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.gallery-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.gallery-item {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    font-size: 18px;
+    color: #555;
+    position: relative;
+}
+
+.gallery-item:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.gallery-item:hover .view-gallery {
+    display: block;
+}
+
+.gallery-preview {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.gallery-preview.active {
+    display: flex;
+}
+
+.view-gallery {
+    background-color: #52177e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: none;
+}
+
+.view-gallery:hover {
+    background-color: #52177e;
+}
+
+.view-gallery {
+    position: absolute;
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    display: none;
+}

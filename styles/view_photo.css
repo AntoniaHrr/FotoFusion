@@ -1,0 +1,46 @@
+@import url("./navbar.css");
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+main {
+    display: flex;
+    flex: 1;
+}
+
+.photo-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.photo-section img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.info-section {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.info-section h2 {
+    margin-top: 0;
+}
+
+.info-section p {
+    font-size: 18px;
+    line-height: 1.5;
+}

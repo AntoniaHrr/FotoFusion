@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Information</title>
+    <link rel="stylesheet" href="./styles/view_photo.css">
+</head>
+<body>
+    <header>
+        <div class="left">
+          <h1>FotoFusion</h1>
+          <label id="dashboard-label" for="menu">Dashboard</label>
+          <ul class="dropdown">
+            <li>
+              <ul class="dropdown-options" id="dropdown-options">
+                <li>
+                  <a href="">
+                    <div class="menu-item">
+                      <img src="./styles/photo-gallery.png" alt="img" />
+                      <div class="column">
+                        <div><span>My galleries</span></div>
+                        <span>View</span>
+                        <span>Edit</span>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="">
+                    <div class="menu-item">
+                      <img src="./styles/explore-gallery.png" alt="img" />
+                      <div class="column">
+                        <div><span>Explore</span></div>
+                        <span>View</span>
+                        <span>Search</span>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="">
+                    <div class="menu-item">
+                      <img src="./styles/girl.png" alt="img" />
+                      <div class="column">
+                        <div><span>Profile</span></div>
+                        <span>View</span>
+                        <span>Edit</span>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </header>
+    <main>
+        <div class="photo-section">
+            <img src="https://via.placeholder.com/800" alt="Photo">
+        </div>
+        <div class="info-section">
+            <h2>Gallery Name</h2>
+            <p><strong>Author:</strong> John Doe</p>
+            <p><strong>Date Uploaded:</strong> June 9, 2024</p>
+        </div>
+    </main>
+    <script>
+        document
+          .getElementById("dashboard-label")
+          .addEventListener("click", function () {
+            var dropdown = document.getElementById("dropdown-options");
+            if (dropdown.style.display === "block") {
+              dropdown.style.display = "none";
+            } else {
+              dropdown.style.display = "block";
+            }
+          });
+      </script>
+</body>
+</html>

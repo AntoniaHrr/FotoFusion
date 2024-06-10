@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image</title>
+    <style>
+        #preview {
+            width: 300px;
+            height: auto;
+            display: none;
+        }
+        .no-show {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form id="upload-form" enctype="multipart/form-data">
+        <label for="image">Изберете изображение:</label>
+        <input type="file" name="image" id="image" accept="image/*" required>
+        
+        <label for="date_taken">Дата на заснемане:</label>
+        <input type="date" name="date_taken" id="date_taken" required>
+        
+        <img id="preview" src="#" alt="Preview">
+        <input type="submit" name="submit" value="Качване">
+    </form>
+    <div id="response-message" class="no-show"></div>
+    
+    <script src="./js/upload.js"></script>
+</body>
+</html>
