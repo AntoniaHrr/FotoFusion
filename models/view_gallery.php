@@ -1,0 +1,51 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+require_once("../database/connect.php");
+
+header('Content-Type: application/json');
+
+if (!isset($_GET['gallery_id'])) {
+    http_response_code(400);
+    echo json_encode(["status" => "ERROR", "message" => "Галерията е задължителна."]);
+    exit();
+}
+
+$gallery_id = $_GET['gallery_id'];
+
+try {
+    $db = new DB();
+    $connection = $db->getConnection();
+
+    // Get images from the collections table
+    $stmt = $connection->prepare("SELECT images FROM collections WHERE name_collection = :gallery_id");
+    $stmt->execute(['gallery_id' => $gallery_id]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($result) {
+        $images_json = $result['images'];
+        $images_array = json_decode($images_json, true);
+
+        // Fetch image details from the images table
+        $images_details = [];
+        foreach ($images_array as $image_id) {
+            $stmt = $connection->prepare("SELECT image_dir FROM images WHERE id = :image_id");
+            $stmt->execute(['image_id' => $image_id]);
+            $image_result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($image_result) {
+                $images_details[] = $image_result['image_dir'];
+            }
+        }
+
+        echo json_encode(["status" => "SUCCESS", "images" => $images_details]);
+    } else {
+        echo json_encode(["status" => "ERROR", "message" => "No images found for this gallery."]);
+    }
+
+} catch (PDOException $e) {
+    http_response_code(500);
+    echo json_encode(["status" => "ERROR", "message" => "Грешка при извличането на данни от базата."]);
+}
+?>

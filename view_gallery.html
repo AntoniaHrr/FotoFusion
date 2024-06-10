@@ -9,53 +9,53 @@
 <body>
     <header>
         <div class="left">
-          <h1>FotoFusion</h1>
-          <label id="dashboard-label" for="menu">Dashboard</label>
-          <ul class="dropdown">
-            <li>
-              <ul class="dropdown-options" id="dropdown-options">
+            <h1>FotoFusion</h1>
+            <label id="dashboard-label" for="menu">Dashboard</label>
+            <ul class="dropdown">
                 <li>
-                  <a href="">
-                    <div class="menu-item">
-                      <img src="./styles/photo-gallery.png" alt="img" />
-                      <div class="column">
-                        <div><span>My galleries</span></div>
-                        <span>View</span>
-                        <span>Edit</span>
-                      </div>
-                    </div>
-                  </a>
+                    <ul class="dropdown-options" id="dropdown-options">
+                        <li>
+                            <a href="">
+                                <div class="menu-item">
+                                    <img src="./styles/photo-gallery.png" alt="img" />
+                                    <div class="column">
+                                        <div><span>My galleries</span></div>
+                                        <span>View</span>
+                                        <span>Edit</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <div class="menu-item">
+                                    <img src="./styles/explore-gallery.png" alt="img" />
+                                    <div class="column">
+                                        <div><span>Explore</span></div>
+                                        <span>View</span>
+                                        <span>Search</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <div class="menu-item">
+                                    <img src="./styles/girl.png" alt="img" />
+                                    <div class="column">
+                                        <div><span>Profile</span></div>
+                                        <span>View</span>
+                                        <span>Edit</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-                <li>
-                  <a href="">
-                    <div class="menu-item">
-                      <img src="./styles/explore-gallery.png" alt="img" />
-                      <div class="column">
-                        <div><span>Explore</span></div>
-                        <span>View</span>
-                        <span>Search</span>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="">
-                    <div class="menu-item">
-                      <img src="./styles/girl.png" alt="img" />
-                      <div class="column">
-                        <div><span>Profile</span></div>
-                        <span>View</span>
-                        <span>Edit</span>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
+            </ul>
         </div>
-      </header>
-      <div class="sidebar">
+    </header>
+    <div class="sidebar">
         <input type="text" placeholder="Search...">
     </div>
     <div class="add-photo">
@@ -63,60 +63,17 @@
     </div>
     
     <main>
+        <input type="hidden" name="gallery_id" id="gallery_id" value="">
         <div class="gallery">
-            <div class="gallery-item">
-                <img src="./styles/gallery.jpg" alt="Image" id="image1">
-                <button class="view-button">View</button>
-            </div>
-            <div class="gallery-item">
-                <img src="./styles/gallery.jpg" alt="Image" id="image2">
-                <button class="view-button">View</button>
-            </div>
-            <div class="gallery-item">
-                <img src="./styles/gallery.jpg" alt="Image" id="image3">
-                <button class="view-button">View</button>
-            </div>
-            <div class="gallery-item">
-                <img src="./styles/gallery.jpg" alt="Image" id="image4">
-                <button class="view-button">View</button>
-            </div>
-            <div class="gallery-item">
-                <img src="./styles/gallery.jpg" alt="Image" id="image5">
-                <button class="view-button">View</button>
-            </div>
-            <div class="gallery-item">
-                <img src="./styles/gallery.jpg" alt="Image" id="image6">
-                <button class="view-button">View</button>
-            </div>
-            <div class="gallery-item">
-                <img src="./styles/gallery.jpg" alt="Image" id="image7">
-                <button class="view-button">View</button>
-            </div>
-            <div class="gallery-item">
-                <img src="./styles/gallery.jpg" alt="Image" id="image8">
-                <button class="view-button">View</button>
-            </div>
-            <div class="gallery-item">
-                <img src="./styles/gallery.jpg" alt="Image" id="image9">
-                <button class="view-button">View</button>
-            </div>
-            <div class="gallery-item">
-                <img src="./styles/gallery.jpg" alt="Image" id="image10">
-                <button class="view-button">View</button>
-            </div>
+            <!-- Галерията ще бъде запълнена чрез JavaScript -->
         </div>
     </main>
+    <script src="./js/view_gallery.js"></script>
     <script>
-        document
-          .getElementById("dashboard-label")
-          .addEventListener("click", function () {
+        document.getElementById("dashboard-label").addEventListener("click", function () {
             var dropdown = document.getElementById("dropdown-options");
-            if (dropdown.style.display === "block") {
-              dropdown.style.display = "none";
-            } else {
-              dropdown.style.display = "block";
-            }
-          });
-      </script>
+            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        });
+    </script>
 </body>
 </html>

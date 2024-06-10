@@ -13,3 +13,8 @@ document
             dropdown.style.display = "block";
         }
     });
+
+function viewGallery(galleryId) {
+    localStorage.setItem("currentGalleryId", galleryId);
+    window.location.href = "view_gallery.html";
+}

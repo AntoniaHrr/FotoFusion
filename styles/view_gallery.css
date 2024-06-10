@@ -42,13 +42,29 @@ main {
 }
 
 .gallery-item {
-    position: relative;
-    width: 100px; 
-    margin: 20px;
-    max-height: 100px;
-    background-color: #fff;
+    width: calc(33.333% - 10px); /* Three items per row with a 10px gap */
+    background-color: #f4f4f4;
+    padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+}
+
+.gallery-item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .gallery-item {
+        width: calc(50% - 10px); /* Two items per row on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-item {
+        width: 100%; /* One item per row on very small screens */
+    }
 }
 
 
