@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
             // File successfully uploaded
+            error_log("Image successfully uploaded to: " . $target_file);
         } else {
             http_response_code(400);
             echo json_encode(["status" => "ERROR", "message" => "Грешка при качването на изображението."]);
@@ -31,34 +32,64 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Get additional data
     $date_taken = isset($_POST['date_taken']) ? $_POST['date_taken'] : null;
+    $gallery = isset($_POST['gallery_id']) ? $_POST['gallery_id'] : null;
+
     if (!$date_taken) {
         http_response_code(400);
+        error_log("No data");
         echo json_encode(["status" => "ERROR", "message" => "Дата на заснемане е задължителна."]);
         exit();
     }
+    if (!$gallery) {
+        http_response_code(400);
+        error_log("No gallery");
+        echo json_encode(["status" => "ERROR", "message" => "Галерията е задължителна."]);
+        exit();
+    }
+    error_log("Date and gallery taken");
 
-    // Insert data into the database
     try {
         $db = new DB();
         $connection = $db->getConnection();
+        error_log("Connected to DB");
+        
+        // Insert data into the images table
+        $stmt = $connection->prepare("INSERT INTO images (date_created, image_dir) VALUES (:date_created, :image_dir)");
+        $stmt->execute(['date_created' => $date_taken, 'image_dir' => $target_file]);
+        $image_id = $connection->lastInsertId();
 
-        if ($connection) {
-            $stmt = $connection->prepare("INSERT INTO images (date_created, image_dir) VALUES (:date_created, :image_dir)");
-            $stmt->execute(['date_created' => $date_taken, 'image_dir' => $target_file]);
-            
-            http_response_code(200);
-            echo json_encode(["status" => "SUCCESS", "message" => "Изображението и данните бяха успешно качени."]);
+        error_log("Image inserted into images table with ID: " . $image_id);
+
+        // Update collections table
+        $stmt = $connection->prepare("SELECT images FROM collections WHERE name_collection = :gallery");
+        $stmt->execute(['gallery' => $gallery]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($result) {
+            $images_json = $result['images'];
+            $images_array = json_decode($images_json, true);
+            $images_array[] = $image_id;
+            error_log("Images in gallery {$gallery} before update: " . print_r($images_array, true));
         } else {
-            throw new Exception("Неуспешно свързване към базата данни.");
+            $images_array = [$image_id];
+            error_log("No existing images for gallery {$gallery}, creating new entry with images: " . print_r($images_array, true));
+            $stmt = $connection->prepare("INSERT INTO collections (name_collection, images) VALUES (:gallery, :images)");
         }
+
+        $new_images_json = json_encode($images_array);
+        if ($result) {
+            $stmt = $connection->prepare("UPDATE collections SET images = :images WHERE name_collection = :gallery");
+        }
+        $stmt->execute(['images' => $new_images_json, 'gallery' => $gallery]);
+
+        error_log("Images in gallery {$gallery} after update: " . print_r($images_array, true));
+
+        http_response_code(200);
+        echo json_encode(["status" => "SUCCESS", "message" => "Изображението и данните бяха успешно качени."]);
     } catch (PDOException $e) {
-        error_log("Database error: " . $e->getMessage()); // Log the error message
         http_response_code(500);
-        echo json_encode(["status" => "ERROR", "message" => "Грешка при записването в базата данни: " . $e->getMessage()]);
-    } catch (Exception $e) {
-        error_log("General error: " . $e->getMessage()); // Log the error message
-        http_response_code(500);
-        echo json_encode(["status" => "ERROR", "message" => "Грешка: " . $e->getMessage()]);
+        error_log("Database error: " . $e->getMessage());
+        echo json_encode(["status" => "ERROR", "message" => "Грешка при записването в базата данни."]);
     }
 } else {
     http_response_code(405);

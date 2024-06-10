@@ -1,7 +1,7 @@
 (function () {
     const imageInput = document.getElementById("image");
-    const dateInput = document.getElementById("date_taken");
     const form = document.getElementById("upload-form");
+    const dateInput = document.getElementById("date_taken");
     const responseDiv = document.getElementById("response-message");
     const preview = document.getElementById("preview");
 
@@ -21,8 +21,12 @@
         event.preventDefault();
         responseDiv.classList.add("no-show");
         responseDiv.innerHTML = null;
+
         const formData = new FormData(form);
-        formData.append("date_taken", dateInput.value);  // Add the date taken field to the form data
+        formData.append("date_taken", dateInput.value);
+        const galleryId = localStorage.getItem("currentGalleryId");
+        formData.append("gallery_id", galleryId);
+
         uploadImage(formData)
             .then((responseMessage) => {
                 if (responseMessage["status"] === "ERROR") {
@@ -35,6 +39,12 @@
                 createErrorDivContent(responseDiv, errorMessage.message);
             });
     });
+
+    // Set the gallery ID from local storage
+    const galleryId = localStorage.getItem("currentGalleryId");
+    if (galleryId) {
+        document.getElementById("gallery_id").value = galleryId;
+    }
 })();
 
 function uploadImage(data) {

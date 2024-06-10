@@ -19,10 +19,12 @@
     <form id="upload-form" enctype="multipart/form-data">
         <label for="image">Изберете изображение:</label>
         <input type="file" name="image" id="image" accept="image/*" required>
-        
+        <br>
         <label for="date_taken">Дата на заснемане:</label>
         <input type="date" name="date_taken" id="date_taken" required>
-        
+        <br>
+        <input type="hidden" name="gallery_id" id="gallery_id" value="">
+        <br>
         <img id="preview" src="#" alt="Preview">
         <input type="submit" name="submit" value="Качване">
     </form>
