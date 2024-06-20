@@ -46,7 +46,16 @@ CREATE TABLE `images` (
   `id` int(11) NOT NULL,
   `author` varchar(32) NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `image_dir` varchar(256) NOT NULL
+  `image_dir` varchar(256) NOT NULL,
+  `name` varchar(256) NOT NULL, -- Name of the image file
+  `size` int(11) NOT NULL, -- Size of the image file in bytes
+  `type` varchar(64) NOT NULL, -- MIME type of the image
+  `last_modified` datetime NOT NULL, -- Last modified date of the image file
+  `make` varchar(64) DEFAULT NULL, -- Camera make
+  `model` varchar(64) DEFAULT NULL, -- Camera model
+  `width` int(11) DEFAULT NULL, -- Image width
+  `height` int(11) DEFAULT NULL, -- Image height
+  `datetime` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------

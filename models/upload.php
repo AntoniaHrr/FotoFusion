@@ -33,6 +33,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Get additional data
     $date_taken = isset($_POST['date_taken']) ? $_POST['date_taken'] : null;
     $gallery = isset($_POST['gallery_id']) ? $_POST['gallery_id'] : null;
+    $name = isset($_POST['name']) ? $_POST['name'] : null;
+    $size = isset($_POST['size']) ? $_POST['size'] : null;
+    $type = isset($_POST['type']) ? $_POST['type'] : null;
+    $lastModified = isset($_POST['lastModified']) ? $_POST['lastModified'] : null;
+    $make = isset($_POST['make']) ? $_POST['make'] : null;
+    $model = isset($_POST['model']) ? $_POST['model'] : null;
+    $width = isset($_POST['width']) ? $_POST['width'] : null;
+    $height = isset($_POST['height']) ? $_POST['height'] : null;
+    $datetime = isset($_POST['datetime']) ? $_POST['datetime'] : null;
 
     if (!$date_taken) {
         http_response_code(400);
@@ -54,8 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         error_log("Connected to DB");
         
         // Insert data into the images table
-        $stmt = $connection->prepare("INSERT INTO images (date_created, image_dir) VALUES (:date_created, :image_dir)");
-        $stmt->execute(['date_created' => $date_taken, 'image_dir' => $target_file]);
+        $stmt = $connection->prepare("INSERT INTO images (date_created, image_dir, name, size, type, last_modified, make, model, width, height, datetime) VALUES (:date_created, :image_dir, :name, :size, :type, :last_modified, :make, :model, :width, :height, :datetime)");
+        $stmt->execute(['date_created' => $date_taken, 'image_dir' => $target_file, 'name' => $name, 'size' => $size, 'type' => $type, 'last_modified' => $lastModified, 'make' => $make, 'model' => $model, 'width' => $width, 'height' => $height, 'datetime' => $datetime]);
         $image_id = $connection->lastInsertId();
 
         error_log("Image inserted into images table with ID: " . $image_id);
