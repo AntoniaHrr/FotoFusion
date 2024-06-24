@@ -20,7 +20,7 @@ try {
     $connection = $db->getConnection();
 
     // Get images from the collections table
-    $stmt = $connection->prepare("SELECT images FROM collections WHERE name_collection = :gallery_id");
+    $stmt = $connection->prepare("SELECT images FROM collections WHERE id = :gallery_id");
     $stmt->execute(['gallery_id' => $gallery_id]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 

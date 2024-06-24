@@ -24,7 +24,9 @@ $fullname = $user_data["fullname"]; // get input first name
 $email = $user_data["email"]; // get input email
 $password = $user_data["password"]; // get input password
 $repeated_password = $user_data["repeat_password"]; // get input repeated password
-$hashed_password = password_hash($password, PASSWORD_DEFAULT); // hash the input password
+$hashed_password = $password;
+//$hashed_password = hash('sha256', $password);
+//$hashed_password = password_hash($password, PASSWORD_DEFAULT); // hash the input password
 
 
 // check if the user has repeated the password correctly

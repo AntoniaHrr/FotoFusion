@@ -21,12 +21,14 @@ function login($user) {
         $db_user = $stmt->fetch(PDO::FETCH_ASSOC); // we expect only one row since we are filtering our query by email which is unique
     
         // check if passwords match
+        // $hashed_password = hash('sha256', $user['password']);
+        // $st = $user['password'];
         if ($user["password"] !== $db_user["password"]) {
-            return ["status" => "ERROR", "message" => "Невалидна парола!", "code" => 400];
+            return ["status" => "ERROR", "message" => "Невалидна парола! ", "code" => 400];
         }
     } 
     catch (PDOException $e) {
-        return ["status" => "ERROR", "message" => "Unexpected error!", "code" => 500];
+        return ["status" => "ERROR", "message" => "Unexpected error! " , "code" => 500];
     }
 
     // if the user input correct data, start the user's session
