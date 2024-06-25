@@ -74,6 +74,15 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id`, `author`, `date_created`, `image_dir`, `name`, `size`, `type`, `last_modified`, `make`, `model`, `width`, `height`, `datetime`) VALUES
+<<<<<<< HEAD
+=======
+(1, '', '2024-06-12 21:00:00', 'uploads/profile.jpg', 'profile.jpg', 2947432, 'image/jpeg', '2024-06-08 07:23:44', 'Unknown', 'Unknown', 0, 0, '0000-00-00 00:00:00'),
+(2, '', '2024-05-29 21:00:00', 'uploads/rent.jpg', 'rent.jpg', 5455094, 'image/jpeg', '2024-05-29 06:42:55', 'Unknown', 'Unknown', 5712, 4284, '0000-00-00 00:00:00'),
+(3, '10', '2024-06-05 21:00:00', 'uploads/register.jpg', 'register.jpg', 96709, 'image/jpeg', '2024-06-09 18:20:52', 'Unknown', 'Unknown', 0, 0, '0000-00-00 00:00:00'),
+(4, '10', '2024-06-03 21:00:00', 'uploads/explore-gallery.png', 'explore-gallery.png', 22995, 'image/png', '2024-06-08 08:19:11', 'Unknown', 'Unknown', 0, 0, '0000-00-00 00:00:00'),
+(5, '10', '2024-05-29 21:00:00', 'uploads/gallery.jpg', 'gallery.jpg', 139940, 'image/jpeg', '2024-06-08 07:03:40', 'Unknown', 'Unknown', 0, 0, '0000-00-00 00:00:00'),
+(6, '10', '2024-06-13 21:00:00', 'uploads/profile.jpg', 'profile.jpg', 2947432, 'image/jpeg', '2024-06-08 07:23:44', 'Unknown', 'Unknown', 0, 0, '0000-00-00 00:00:00'),
+>>>>>>> 2f942f0f7b94cb6c287c3ddced86f7885a77e6f7
 (7, '10', '2024-05-28 21:00:00', 'uploads/0bs1zdxbgx8nhs8kf01aeehmm0.jpg', '0bs1zdxbgx8nhs8kf01aeehmm0.jpg', 132399, 'image/jpeg', '2024-06-24 21:22:59', 'SONY', 'ILCE-7M2', 1200, 800, '2018-08-26 10:39:33'),
 (8, '10', '2024-05-29 21:00:00', 'uploads/5xwvta28998baagq7dxnjkyvbs.jpg', '5xwvta28998baagq7dxnjkyvbs.jpg', 209405, 'image/jpeg', '2024-06-24 21:23:23', 'SONY', 'ILCE-7M2', 1200, 800, '2020-11-20 15:25:47'),
 (9, '10', '2024-05-29 21:00:00', 'uploads/5xwvta28998baagq7dxnjkyvbs.jpg', '5xwvta28998baagq7dxnjkyvbs.jpg', 209405, 'image/jpeg', '2024-06-24 21:23:23', 'SONY', 'ILCE-7M2', 1200, 800, '2020-11-20 15:25:47'),
