@@ -9,7 +9,7 @@ header('Content-Type: application/json');
 
 if (!isset($_GET['gallery_id'])) {
     http_response_code(400);
-    echo json_encode(["status" => "ERROR", "message" => "Галерията е задължителна."]);
+    echo json_encode(["status" => "ERROR", "message" => "Gallery ID is required."]);
     exit();
 }
 
@@ -28,14 +28,17 @@ try {
         $images_json = $result['images'];
         $images_array = json_decode($images_json, true);
 
-        // Fetch image details from the images table
+        // Fetch image details including datetime from the images table
         $images_details = [];
         foreach ($images_array as $image_id) {
-            $stmt = $connection->prepare("SELECT image_dir FROM images WHERE id = :image_id");
+            $stmt = $connection->prepare("SELECT image_dir, datetime FROM images WHERE id = :image_id");
             $stmt->execute(['image_id' => $image_id]);
             $image_result = $stmt->fetch(PDO::FETCH_ASSOC);
             if ($image_result) {
-                $images_details[] = $image_result['image_dir'];
+                $images_details[] = [
+                    'src' => $image_result['image_dir'],
+                    'datetime' => $image_result['datetime']
+                ];
             }
         }
 
@@ -46,6 +49,6 @@ try {
 
 } catch (PDOException $e) {
     http_response_code(500);
-    echo json_encode(["status" => "ERROR", "message" => "Грешка при извличането на данни от базата."]);
+    echo json_encode(["status" => "ERROR", "message" => "Error fetching data from the database."]);
 }
 ?>

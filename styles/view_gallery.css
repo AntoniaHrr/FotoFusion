@@ -1,108 +1,238 @@
 @import url("./navbar.css");
 
-
+/* Global Styles */
 body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f4f4;
 }
 
-.add-photo {
-    padding-top: 50px;
-    padding-right: 50px;
-    text-align: right;
+/* Header Styles */
+header {
+  background-color: #52177e;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-#add-photo {
-    background-color: #52177e;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
+header h1 {
+  margin: 0;
+  font-size: 24px;
 }
 
-#add-photo:hover {
-    background-color: #52177e;
+header .dropdown {
+  position: relative;
 }
 
-main {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
+header .dropdown-options {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  color: #333;
+  min-width: 200px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  border-radius: 5px;
 }
 
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 1000px;
+header .dropdown-options li {
+  list-style: none;
 }
 
-.gallery-item {
-    width: calc(33.333% - 10px); /* Three items per row with a 10px gap */
-    background-color: #f4f4f4;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+header .dropdown-options li a {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
 }
 
-.gallery-item img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
+header .dropdown-options li a:hover {
+  background-color: #f4f4f4;
 }
 
-@media (max-width: 768px) {
-    .gallery-item {
-        width: calc(50% - 10px); /* Two items per row on smaller screens */
-    }
+header .dropdown-options .menu-item {
+  display: flex;
+  align-items: center;
 }
 
-@media (max-width: 480px) {
-    .gallery-item {
-        width: 100%; /* One item per row on very small screens */
-    }
+header .dropdown-options .menu-item img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
 }
 
-
-.gallery-item:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
+header .dropdown-options .column {
+  display: flex;
+  flex-direction: column;
 }
 
-.gallery-item .view-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 5px;
-    display: none;
+header .dropdown-options .column span {
+  font-size: 14px;
 }
 
-.gallery-item:hover .view-button {
-    display: block;
+header #dashboard-label {
+  cursor: pointer;
+  font-size: 16px;
 }
 
+/* Sidebar Styles */
 .sidebar {
-    background-color: #52177e;
-    color: white;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
+  color: white;
+  padding: 20px;
+  width: 250px;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar input[type="text"] {
-    padding: 10px;
-    margin-bottom: 10px;
-    border: none;
-    border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+  width: calc(100% - 20px);
+}
+
+/* Add Photo Section */
+.add-photo {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.add-photo button,
+.add-photo input {
+  margin-left: 10px;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+}
+
+#add-photo {
+  background-color: #52177e;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#add-photo:hover {
+  background-color: #3e1262;
+}
+
+.add-photo input[type="date"],
+.add-photo input[type="text"] {
+  width: 140px;
+  padding: 8px;
+  margin: 0 5px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.add-photo input[type="text"] {
+  width: 100px;
+}
+
+.add-photo input[type="date"]:focus,
+.add-photo input[type="text"]:focus {
+  border-color: #52177e;
+  box-shadow: 0 0 5px rgba(82, 23, 126, 0.5);
+}
+
+.add-photo input[type="date"]::placeholder,
+.add-photo input[type="text"]::placeholder {
+  color: #999;
+}
+
+/* Main Content Styles */
+main {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  gap: 15px;
+  justify-content: center;
+}
+
+.gallery-item {
+  width: calc(33.333% - 10px); /* Three items per row with a 10px gap */
+  background-color: white;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-item .view-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  display: none;
+}
+
+.gallery-item:hover .view-button {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .gallery-item {
+    width: calc(50% - 10px); /* Two items per row on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-item {
+    width: 100%; /* One item per row on very small screens */
+  }
 }
