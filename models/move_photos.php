@@ -8,14 +8,14 @@ require_once("../database/connect.php");
 header('Content-Type: application/json');
 
 $data = json_decode(file_get_contents('php://input'), true);
-if (!isset($data['photoIds']) || !isset($data['targetGalleryId'])) {
+if (!isset($data['photoIds']) || !isset($data['moveToGalleryId'])) {
     http_response_code(400);
     echo json_encode(["status" => "ERROR", "message" => "Photo IDs and target gallery ID are required."]);
     exit();
 }
 
 $photoIds = $data['photoIds'];
-$targetGalleryId = $data['targetGalleryId'];
+$targetGalleryId = $data['moveToGalleryId'];
 
 try {
     $db = new DB();
@@ -35,7 +35,7 @@ try {
     $targetImages = json_decode($targetResult['images'], true) ?? [];
 
     // Get the current gallery ID
-    $currentGalleryId = $data['currentGalleryId'];
+    $currentGalleryId = $data['galleryId'];
     $stmt = $connection->prepare("SELECT images FROM collections WHERE id = :gallery_id");
     $stmt->execute(['gallery_id' => $currentGalleryId]);
     $currentResult = $stmt->fetch(PDO::FETCH_ASSOC);
