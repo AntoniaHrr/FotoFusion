@@ -1,77 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create New Gallery</title>
-    <link rel="stylesheet" href="./styles/create-gallery.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./styles/create-gallery.css" />
+  </head>
+  <body>
     <header>
-        <div class="left">
-          <h1>FotoFusion</h1>
-          <label id="dashboard-label" for="menu">Dashboard</label>
-          <ul class="dropdown">
-            <li>
-              <ul class="dropdown-options" id="dropdown-options">
-                <li>
-                  <a href="">
-                    <div class="menu-item">
-                      <img src="./styles/photo-gallery.png" alt="img" />
-                      <div class="column">
-                        <div><span>My galleries</span></div>
-                        <span>View</span>
-                        <span>Edit</span>
-                      </div>
+      <div class="left">
+        <a href="./homepage.html"><h1>FotoFusion</h1></a>
+        <label id="dashboard-label" for="menu">Dashboard</label>
+        <ul class="dropdown">
+          <li>
+            <ul class="dropdown-options" id="dropdown-options">
+              <li>
+                <a href="">
+                  <div class="menu-item">
+                    <img src="./styles/photo-gallery.png" alt="img" />
+                    <div class="column">
+                      <div><span>My galleries</span></div>
+                      <span>View</span>
+                      <span>Edit</span>
                     </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="">
-                    <div class="menu-item">
-                      <img src="./styles/explore-gallery.png" alt="img" />
-                      <div class="column">
-                        <div><span>Explore</span></div>
-                        <span>View</span>
-                        <span>Search</span>
-                      </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <div class="menu-item">
+                    <img src="./styles/explore-gallery.png" alt="img" />
+                    <div class="column">
+                      <div><span>Explore</span></div>
+                      <span>View</span>
+                      <span>Search</span>
                     </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="">
-                    <div class="menu-item">
-                      <img src="./styles/girl.png" alt="img" />
-                      <div class="column">
-                        <div><span>Profile</span></div>
-                        <span>View</span>
-                        <span>Edit</span>
-                      </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <div class="menu-item">
+                    <img src="./styles/girl.png" alt="img" />
+                    <div class="column">
+                      <div><span>Profile</span></div>
+                      <span>View</span>
+                      <span>Edit</span>
                     </div>
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </header>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </header>
     <main>
-        <form class="gallery-form" id="gallery-form">
-            <label for="gallery-name">Gallery Name:</label>
-            <input type="text" id="gallery-name" name="gallery-name" required>
+      <form class="gallery-form" id="gallery-form">
+        <label for="gallery-name">Gallery Name:</label>
+        <input type="text" id="gallery-name" name="gallery-name" required />
 
-            <label for="gallery-tags">Tags:</label>
-            <input type="text" id="gallery-tags" name="gallery-tags" placeholder="Comma separated">
+        <label for="gallery-tags">Tags:</label>
+        <input
+          type="text"
+          id="gallery-tags"
+          name="gallery-tags"
+          placeholder="Comma separated"
+        />
 
-            <label for="gallery-private">
-              <input type="checkbox" id="gallery-private" name="gallery-private">
-              Private
-            </label>
+        <label for="gallery-private">
+          <input type="checkbox" id="gallery-private" name="gallery-private" />
+          Private
+        </label>
 
-            <button type="submit">Create Gallery</button>
-        </form>
-        <div id="response-message"></div>
+        <button type="submit">Create Gallery</button>
+      </form>
+      <div id="response-message"></div>
     </main>
     <script src="./js/add_gallery.js"></script>
-</body>
+  </body>
 </html>

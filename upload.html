@@ -18,6 +18,54 @@
   </head>
   <script src="https://cdn.rawgit.com/exif-js/exif-js/master/exif.js"></script>
   <body>
+    <header>
+      <div class="left">
+        <a href="./homepage.html"><h1>FotoFusion</h1></a>
+        <label id="dashboard-label" for="menu">Dashboard</label>
+        <ul class="dropdown">
+          <li>
+            <ul class="dropdown-options" id="dropdown-options">
+              <li>
+                <a href="">
+                  <div class="menu-item">
+                    <img src="./styles/photo-gallery.png" alt="img" />
+                    <div class="column">
+                      <div><span>My galleries</span></div>
+                      <span>View</span>
+                      <span>Edit</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <div class="menu-item">
+                    <img src="./styles/explore-gallery.png" alt="img" />
+                    <div class="column">
+                      <div><span>Explore</span></div>
+                      <span>View</span>
+                      <span>Search</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <div class="menu-item">
+                    <img src="./styles/girl.png" alt="img" />
+                    <div class="column">
+                      <div><span>Profile</span></div>
+                      <span>View</span>
+                      <span>Edit</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </header>
     <form id="upload-form" enctype="multipart/form-data">
       <label for="image">Изберете изображение:</label>
       <input type="file" name="image" id="image" accept="image/*" required />
