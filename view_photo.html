@@ -56,26 +56,13 @@
         </div>
       </header>
     <main>
-        <div class="photo-section">
-            <img src="https://via.placeholder.com/800" alt="Photo">
-        </div>
-        <div class="info-section">
-            <h2>Gallery Name</h2>
-            <p><strong>Author:</strong> John Doe</p>
-            <p><strong>Date Uploaded:</strong> June 9, 2024</p>
-        </div>
+      <div class="photo-section">
+        <img src="https://via.placeholder.com/800" alt="Photo">
+    </div>
+    <div class="info-section">
+        <!-- Photo details will be injected here by JavaScript -->
+    </div>
     </main>
-    <script>
-        document
-          .getElementById("dashboard-label")
-          .addEventListener("click", function () {
-            var dropdown = document.getElementById("dropdown-options");
-            if (dropdown.style.display === "block") {
-              dropdown.style.display = "none";
-            } else {
-              dropdown.style.display = "block";
-            }
-          });
-      </script>
+    <script src="./js/view_photo.js"></script>
 </body>
 </html>

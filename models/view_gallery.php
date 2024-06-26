@@ -31,11 +31,14 @@ try {
         // Fetch image details from the images table
         $images_details = [];
         foreach ($images_array as $image_id) {
-            $stmt = $connection->prepare("SELECT image_dir FROM images WHERE id = :image_id");
+            $stmt = $connection->prepare("SELECT id, image_dir FROM images WHERE id = :image_id");
             $stmt->execute(['image_id' => $image_id]);
             $image_result = $stmt->fetch(PDO::FETCH_ASSOC);
             if ($image_result) {
-                $images_details[] = $image_result['image_dir'];
+                $images_details[] = [
+                    'id' => $image_result['id'],
+                    'image_dir' => $image_result['image_dir']
+                ];
             }
         }
 

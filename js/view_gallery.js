@@ -1,19 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Получаване на идентификатора на галерията от URL параметъра
     const urlParams = new URLSearchParams(window.location.search);
     const galleryId = localStorage.getItem("currentGalleryId");
 
-    // Настройка на стойността на скритото поле
     document.getElementById('gallery_id').value = galleryId;
 
-    // Функция за изобразяване на изображенията в галерията
     function displayImages(galleryId) {
         const galleryContainer = document.querySelector('.gallery');
 
-        // Изчистване на съдържанието на галерията
         galleryContainer.innerHTML = '';
 
-        // Извличане на изображенията от галерията с AJAX заявка
         fetch(`./models/view_gallery.php?gallery_id=${galleryId}`)
             .then(response => response.json())
             .then(data => {
@@ -22,7 +17,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     images.forEach(image => {
                         const imageElement = document.createElement('div');
                         imageElement.classList.add('gallery-item');
-                        imageElement.innerHTML = `<img src="./models/${image}" alt="Image">`;
+                        imageElement.innerHTML = `
+                        <a href="view_photo.html?photoId=${image.id}">    
+                        <img src="./models/${image.image_dir}" alt="Image">
+                        </a>`;
+
                         galleryContainer.appendChild(imageElement);
                     });
                 } else {
@@ -37,8 +36,11 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     }
 
-    // Извикване на функцията за изобразяване на изображенията
     if (galleryId) {
         displayImages(galleryId);
     }
 });
+
+function addPhoto() {
+    window.location.href = "upload.html";
+}
