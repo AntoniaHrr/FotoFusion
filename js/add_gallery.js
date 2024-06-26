@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
         responseDiv.innerHTML = "";
 
         const formData = new FormData(form);
-        formData.append("visibility", document.getElementById("gallery-private").checked ? "private" : "public");
+        formData.append("visibility", document.getElementById("gallery-private").checked ? 1 : 0);
 
         createGallery(formData)
             .then((response) => {

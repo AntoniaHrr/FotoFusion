@@ -7,7 +7,7 @@ header('Content-Type: application/json');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = isset($_POST['gallery-name']) ? trim($_POST['gallery-name']) : null;
     $tags = isset($_POST['gallery-tags']) ? trim($_POST['gallery-tags']) : null;
-    $visibility = isset($_POST['visibility']) ? trim($_POST['visibility']) : 'public';
+    $visibility = isset($_POST['visibility']) ? trim($_POST['visibility']) : 0;
     $author = isset($_SESSION['user']['id']) ? $_SESSION['user']['id'] : null;
 
     // Check if name is provided

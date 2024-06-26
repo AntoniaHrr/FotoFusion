@@ -1,11 +1,32 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Getting the gallery ID from local storage or URL parameter
     const galleryId = localStorage.getItem("currentGalleryId");
 
     // Set the value of the hidden gallery_id input field
     if (document.getElementById('gallery_id')) {
         document.getElementById('gallery_id').value = galleryId;
     }
+
+    // Fetch galleries and populate move-to-gallery select options
+    fetch("./models/get_galleries.php")
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'SUCCESS') {
+                const galleries = data.galleries;
+                const selectGallery = document.getElementById("move-to-gallery");
+
+                galleries.forEach(gallery => {
+                    const option = document.createElement("option");
+                    option.value = gallery.id;
+                    option.textContent = gallery.name_collection;
+                    selectGallery.appendChild(option);
+                });
+            } else {
+                displayMessage('Failed to fetch galleries: ' + data.message, 'error');
+            }
+        })
+        .catch(error => {
+            displayMessage('Error fetching galleries: ' + error.message, 'error');
+        });
 
     // Event listener for datetime search button click
     document.getElementById("date-time-btn").addEventListener("click", () => {
@@ -16,7 +37,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (searchDate && endDate && startHour && endHour) {
             displayImages(galleryId, searchDate, endDate, startHour, endHour);
+        } else {
+            displayMessage('Please fill in all date and time fields.', 'error');
         }
+    });
+
+    // Event listener for move photos button click
+    document.getElementById("move-photos-btn").addEventListener("click", () => {
+        const selectedPhotos = document.querySelectorAll(".gallery-item input[type='checkbox']:checked");
+        const moveToGalleryId = document.getElementById("move-to-gallery").value;
+
+        if (selectedPhotos.length === 0) {
+            displayMessage('Please select one or more photos to move.', 'error');
+            return;
+        }
+
+        const photoIds = Array.from(selectedPhotos).map(checkbox => checkbox.value);
+
+        fetch("./models/move_photos.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                galleryId: galleryId,
+                moveToGalleryId: moveToGalleryId,
+                photoIds: photoIds
+            }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'SUCCESS') {
+                    displayMessage('Photos moved successfully.', 'success');
+                    // Optionally, update the UI to reflect the changes
+                    displayImages(galleryId); // Reload current gallery after moving photos
+                } else {
+                    displayMessage('Failed to move photos: ' + data.message, 'error');
+                }
+            })
+            .catch(error => {
+                displayMessage('Error moving photos: ' + error.message, 'error');
+            });
     });
 
     // Function to display images in the gallery
@@ -62,23 +123,21 @@ document.addEventListener("DOMContentLoaded", function () {
                             const imageElement = document.createElement("div");
                             imageElement.classList.add("gallery-item");
                             imageElement.innerHTML = `
-                                <a href="view_photo.html?photoId=${image.id}">
+                                <label>
+                                    <input type="checkbox" value="${image.id}">
                                     <img src="./models/${image.image_dir}" alt="Image">
-                                </a>`;
+                                </label>`;
                             galleryContainer.appendChild(imageElement);
                         });
                     } else {
-                        galleryContainer.innerHTML = `<p>No images found for the selected date and time range.</p>`;
+                        displayMessage('No images found for the selected date and time range.', 'info');
                     }
                 } else {
-                    const errorMessage = `<p>${data.message}</p>`;
-                    galleryContainer.innerHTML = errorMessage;
+                    displayMessage('Failed to fetch images: ' + data.message, 'error');
                 }
             })
             .catch((error) => {
-                console.error("Error fetching images:", error);
-                const errorMessage = `<p>Failed to fetch images. Please try again later.</p>`;
-                galleryContainer.innerHTML = errorMessage;
+                displayMessage('Error fetching images: ' + error.message, 'error');
             });
     }
 
@@ -86,8 +145,21 @@ document.addEventListener("DOMContentLoaded", function () {
     if (galleryId) {
         displayImages(galleryId);
     }
-});
 
-function addPhoto() {
-    window.location.href = "upload.html";
-}
+    function addPhoto() {
+        window.location.href = "upload.html";
+    }
+
+    // Function to display messages on the page
+    function displayMessage(message, type) {
+        const messageContainer = document.getElementById('message-container');
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message', type);
+        messageElement.textContent = message;
+        messageContainer.appendChild(messageElement);
+        // Optionally, remove the message after some time
+        setTimeout(() => {
+            messageElement.remove();
+        }, 5000); // Remove message after 5 seconds
+    }
+});
