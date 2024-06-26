@@ -80,6 +80,42 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     });
 
+    // Event listener for delete photos button click
+    document.getElementById("delete-photos-btn").addEventListener("click", () => {
+        const selectedPhotos = document.querySelectorAll(".gallery-item input[type='checkbox']:checked");
+
+        if (selectedPhotos.length === 0) {
+            displayMessage('Please select one or more photos to delete.', 'error');
+            return;
+        }
+
+        const photoIds = Array.from(selectedPhotos).map(checkbox => checkbox.value);
+
+        fetch("./models/delete_photos.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                galleryId: galleryId,
+                photoIds: photoIds
+            }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'SUCCESS') {
+                    displayMessage('Photos deleted successfully.', 'success');
+                    // Optionally, update the UI to reflect the changes
+                    displayImages(galleryId); // Reload current gallery after deleting photos
+                } else {
+                    displayMessage('Failed to delete photos: ' + data.message, 'error');
+                }
+            })
+            .catch(error => {
+                displayMessage('Error deleting photos: ' + error.message, 'error');
+            });
+    });
+
     // Function to display images in the gallery
     function displayImages(galleryId, searchDate = "", endDate = "", startHour = "", endHour = "") {
         const galleryContainer = document.querySelector(".gallery");
@@ -94,32 +130,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (data.status === 'SUCCESS') {
                     const images = data.images;
 
-                    // Filter images based on searchDate and time range if provided
-                    const filteredImages = searchDate
-                        ? images.filter((image) => {
-                            const [imageDate, imageTime] = image.datetime.split(" ");
-
-                            if (imageDate >= searchDate && imageDate <= endDate) {
-                                const [imageHour, imageMinute, imageSecond] = imageTime.split(":").map(Number);
-                                const [startHourInt, startMinute, startSecond] = startHour.split(":").map(Number);
-                                const [endHourInt, endMinute, endSecond] = endHour.split(":").map(Number);
-
-                                const imageTimeInSeconds = imageHour * 3600 + imageMinute * 60 + imageSecond;
-                                const startTimeInSeconds = startHourInt * 3600 + startMinute * 60 + startSecond;
-                                const endTimeInSeconds = endHourInt * 3600 + endMinute * 60 + endSecond;
-
-                                return (
-                                    imageTimeInSeconds >= startTimeInSeconds &&
-                                    imageTimeInSeconds <= endTimeInSeconds
-                                );
-                            }
-                            return false;
-                        })
-                        : images;
-
                     // Display filtered images
-                    if (filteredImages.length > 0) {
-                        filteredImages.forEach((image) => {
+                    if (images.length > 0) {
+                        images.forEach((image) => {
                             const imageElement = document.createElement("div");
                             imageElement.classList.add("gallery-item");
                             imageElement.innerHTML = `
