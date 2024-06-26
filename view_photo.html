@@ -1,68 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Photo Information</title>
-    <link rel="stylesheet" href="./styles/view_photo.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./styles/view_photo.css" />
+  </head>
+  <body>
     <header>
-        <div class="left">
-          <h1>FotoFusion</h1>
-          <label id="dashboard-label" for="menu">Dashboard</label>
-          <ul class="dropdown">
-            <li>
-              <ul class="dropdown-options" id="dropdown-options">
-                <li>
-                  <a href="">
-                    <div class="menu-item">
-                      <img src="./styles/photo-gallery.png" alt="img" />
-                      <div class="column">
-                        <div><span>My galleries</span></div>
-                        <span>View</span>
-                        <span>Edit</span>
-                      </div>
+      <div class="left">
+        <h1>FotoFusion</h1>
+        <label id="dashboard-label" for="menu">Dashboard</label>
+        <ul class="dropdown">
+          <li>
+            <ul class="dropdown-options" id="dropdown-options">
+              <li>
+                <a href="">
+                  <div class="menu-item">
+                    <img src="./styles/photo-gallery.png" alt="img" />
+                    <div class="column">
+                      <div><span>My galleries</span></div>
+                      <span>View</span>
+                      <span>Edit</span>
                     </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="">
-                    <div class="menu-item">
-                      <img src="./styles/explore-gallery.png" alt="img" />
-                      <div class="column">
-                        <div><span>Explore</span></div>
-                        <span>View</span>
-                        <span>Search</span>
-                      </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <div class="menu-item">
+                    <img src="./styles/explore-gallery.png" alt="img" />
+                    <div class="column">
+                      <div><span>Explore</span></div>
+                      <span>View</span>
+                      <span>Search</span>
                     </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="">
-                    <div class="menu-item">
-                      <img src="./styles/girl.png" alt="img" />
-                      <div class="column">
-                        <div><span>Profile</span></div>
-                        <span>View</span>
-                        <span>Edit</span>
-                      </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <div class="menu-item">
+                    <img src="./styles/girl.png" alt="img" />
+                    <div class="column">
+                      <div><span>Profile</span></div>
+                      <span>View</span>
+                      <span>Edit</span>
                     </div>
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </header>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </header>
     <main>
       <div class="photo-section">
-        <img src="https://via.placeholder.com/800" alt="Photo">
-    </div>
-    <div class="info-section">
-        <!-- Photo details will be injected here by JavaScript -->
-    </div>
+        <img src="https://via.placeholder.com/800" alt="Photo" />
+      </div>
+      <div class="info-section">
+        <button id="download-btn">Download</button>
+      </div>
     </main>
     <script src="./js/view_photo.js"></script>
-</body>
+  </body>
 </html>
