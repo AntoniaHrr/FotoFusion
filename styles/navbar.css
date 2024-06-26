@@ -14,7 +14,7 @@ header {
 .left h1 {
   margin: 0;
   font-size: 24px;
-  color: #333;
+  color: #eee;
   text-decoration: none;
 }
 
@@ -147,4 +147,5 @@ a {
   transition: all 0.2s ease-out;
   outline: 0 !important;
   text-decoration: none;
+  color: #ddd;
 }

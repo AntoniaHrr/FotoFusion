@@ -236,3 +236,76 @@ main {
     width: 100%; /* One item per row on very small screens */
   }
 }
+
+/* Container styling for the move-photos section */
+.move-photos {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Header styling */
+.move-photos h2 {
+  margin-bottom: 15px;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Paragraph styling */
+.move-photos p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #555;
+}
+
+/* Move options container */
+.move-options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px; /* Space between elements */
+}
+
+/* Dropdown styling */
+.move-options select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  width: 60%; /* Adjust width as needed */
+}
+
+.move-options button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #7d0086;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Button hover and active states */
+.move-options button:hover {
+  background-color: #5700b3;
+  transform: translateY(-2px);
+}
+
+.move-options button:active {
+  background-color: #57007f;
+  transform: translateY(1px);
+}
+
+/* Message container styling */
+#message-container {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #333;
+}
