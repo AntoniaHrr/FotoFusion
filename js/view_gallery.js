@@ -186,14 +186,15 @@ document.addEventListener("DOMContentLoaded", async function () {
                         <a href="view_photo.html?photoId=${image.id}">
                         <img src="./models/${image.image_dir}" alt="Image">
                         <label>
-                                <input id="checkbox" hidden type="checkbox" value="${image.id}">
+                                <input id="checkbox-${image.id}" hidden type="checkbox" value="${image.id}">
                             </label>
                         </a>`;
                         galleryContainer.appendChild(imageElement);
+                        if (userGallery) {
+                            document.getElementById("checkbox-"+image.id).hidden = false;
+                        }
                     });
-                    if (userGallery) {
-                        document.getElementById("checkbox").hidden = false;
-                    }
+                    
                 } else {
                     galleryContainer.innerHTML = `<p>No images found for the selected date and time range.</p>`;
                 }
