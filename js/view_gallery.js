@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", async function () {
     const galleryId = localStorage.getItem("currentGalleryId");
+    var userGallery;
 
     // Set the value of the hidden gallery_id input field
     if (document.getElementById('gallery_id')) {
@@ -30,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             const deletePhotosBtn = document.getElementById("delete-photos-btn");
             const moveSelect = document.getElementById("move-to-gallery");
             const add = document.getElementById("add-photo");
-            const userGallery = galleries.find(gallery => gallery.id === parseInt(galleryId) && gallery.by_username == currentUserId);
+            userGallery = galleries.find(gallery => gallery.id === parseInt(galleryId) && gallery.by_username == currentUserId);
             const openGallery = galleries.find(gallery => gallery.id === parseInt(galleryId) && (gallery => gallery.visibility === 0 || gallery.by_username == currentUserId));
 
             if (userGallery) {
@@ -184,12 +185,17 @@ document.addEventListener("DOMContentLoaded", async function () {
                         const imageElement = document.createElement("div");
                         imageElement.classList.add("gallery-item");
                         imageElement.innerHTML = `
-                            <label>
-                                <input type="checkbox" value="${image.id}">
-                                <img src="./models/${image.image_dir}" alt="Image">
-                            </label>`;
+                        <a href="view_photo.html?photoId=${image.id}">
+                        <img src="./models/${image.image_dir}" alt="Image">
+                        <label>
+                                <input id="checkbox" hidden type="checkbox" value="${image.id}">
+                            </label>
+                        </a>`;
                         galleryContainer.appendChild(imageElement);
                     });
+                    if (userGallery) {
+                        document.getElementById("checkbox").hidden = false;
+                    }
                 } else {
                     galleryContainer.innerHTML = `<p>No images found for the selected date and time range.</p>`;
                 }
