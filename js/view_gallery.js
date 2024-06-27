@@ -27,17 +27,15 @@ document.addEventListener("DOMContentLoaded", async function () {
             const currentUserId = data.currentUserId;  // Получаваме текущия потребител от отговора
 
             // Enable move and delete photos buttons only if the gallery belongs to the user
-            const movePhotosBtn = document.getElementById("move-photos-btn");
+            const movePhotos = document.getElementById("move-photos");
             const deletePhotosBtn = document.getElementById("delete-photos-btn");
-            const moveSelect = document.getElementById("move-to-gallery");
             const add = document.getElementById("add-photo");
             userGallery = galleries.find(gallery => gallery.id === parseInt(galleryId) && gallery.by_username == currentUserId);
             const openGallery = galleries.find(gallery => gallery.id === parseInt(galleryId) && (gallery => gallery.visibility === 0 || gallery.by_username == currentUserId));
 
             if (userGallery) {
-                movePhotosBtn.hidden = false;
+                movePhotos.hidden = false;
                 deletePhotosBtn.hidden = false;
-                moveSelect.hidden = false;
             }
             if (openGallery) {
                 add.hidden = false;
