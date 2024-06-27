@@ -59,7 +59,7 @@
         <input type="text" id="search-input" placeholder="Search...">
     </div>
     <div class="add-photo">
-        <div><button id="add-photo" onclick="addPhoto()">Add Photo</button></div>
+        <div><button id="add-photo" hidden onclick="addPhoto()">Add Photo</button></div>
         <div>
             <input type="date" id="date-time">
             <input type="date" id="end-date">
@@ -76,15 +76,15 @@
         </div>
         <div class="move-photos">
             <div class="move-options">
-                <select id="move-to-gallery">
+                <select id="move-to-gallery" hidden>
                     <!-- Опциите за галерии ще бъдат попълнени чрез JavaScript -->
                 </select>
-                <button id="move-photos-btn">Move Photos</button>
+                <button id="move-photos-btn" hidden>Move Photos</button>
             </div>
             <div id="message-container"></div>
         </div>
         <div class="delete-photos">
-            <button id="delete-photos-btn">Deletе</button>
+            <button id="delete-photos-btn" hidden>Deletе</button>
         </div>
     </main>
     <script src="./js/view_gallery.js"></script>

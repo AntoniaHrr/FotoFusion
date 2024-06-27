@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $galleries = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         http_response_code(200);
-        echo json_encode(["status" => "SUCCESS", "galleries" => $galleries]);
+        echo json_encode(["status" => "SUCCESS", "galleries" => $galleries, "currentUserId" => $author]);
     } catch (PDOException $e) {
         // Log the detailed error message
         error_log("Database error: " . $e->getMessage());
