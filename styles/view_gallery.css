@@ -246,6 +246,7 @@ main {
   background-color: #f9f9f9;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+  height: 50px;
 }
 
 /* Header styling */
@@ -308,4 +309,15 @@ main {
   margin-top: 20px;
   font-size: 14px;
   color: #333;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #7d0086;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
 }

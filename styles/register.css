@@ -1,64 +1,78 @@
+/* General styles */
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: sans-serif;
-  min-height: 100vh;
-  background-image: url(./register.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  flex-direction: column;
-  margin: 0;
+  background-color: #f3e5f5; /* Very light purple background */
+  font-family: Arial, sans-serif; /* A clean, modern font */
 }
 
-.main {
-  background-color: #fff;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  padding: 20px 30px;
-  transition: transform 0.2s;
-  width: 500px;
-  text-align: center;
+main {
+  max-width: 400px;
+  margin: 50px auto;
+  background-color: #ede7f6; /* Light purple background for the form */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(93, 64, 168, 0.2); /* Soft purple shadow */
 }
 
-h1 {
-  color: #52177e;
+/* Form styles */
+#registration-form {
+  display: grid;
+  gap: 10px;
+}
+
+.form-item {
+  margin-bottom: 10px;
 }
 
 label {
-  width: 100%;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  text-align: center;
-  color: #555;
   font-weight: bold;
+  color: #6a1b9a; /* Dark purple color for labels */
 }
 
-input {
-  display: block;
-  width: 80%;
-  margin: 5px auto 15px auto;
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: calc(100% - 20px);
   padding: 10px;
-  box-sizing: border-box;
-  border: 1px solid #ddd;
+  border: 1px solid #6a1b9a; /* Dark purple border */
   border-radius: 5px;
-}
-
-button {
-  padding: 15px;
-  border-radius: 10px;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  border: none;
-  color: white;
-  cursor: pointer;
-  background-color: #52177e;
-  width: 50%;
+  outline: none;
   font-size: 16px;
 }
 
-.error-message {
-  color: red;
-  font-size: 14px;
-  margin-bottom: 10px;
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #4a148c; /* Darker purple on focus */
+}
+
+.button-container {
+  text-align: center;
+}
+
+#register-button {
+  background-color: #8e24aa; /* Medium purple background */
+  color: #ffffff; /* White text */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+#register-button:hover {
+  background-color: #7b1fa2; /* Darker shade of purple on hover */
+}
+
+#response-message {
+  padding: 10px;
+  background-color: #c2185b; /* Strong, vivid purple for error messages */
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.no-show {
   display: none;
 }

@@ -1,16 +1,16 @@
-/* styles/index.css or purple-theme.css */
-
+/* General styles */
 body {
-  background-color: #f2f2f2; /* Light grey background */
+  background-color: #f3e5f5; /* Very light purple background */
+  font-family: Arial, sans-serif; /* A clean, modern font */
 }
 
 main {
   max-width: 400px;
   margin: 50px auto;
-  background-color: #ffffff; /* White background for the form */
+  background-color: #ede7f6; /* Light purple background for the form */
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  box-shadow: 0 0 15px rgba(93, 64, 168, 0.2); /* Soft purple shadow */
 }
 
 /* Form styles */
@@ -25,14 +25,14 @@ main {
 
 label {
   font-weight: bold;
-  color: #5e35b1; /* Purple color for labels */
+  color: #6a1b9a; /* Dark purple color for labels */
 }
 
 input[type="email"],
 input[type="password"] {
   width: calc(100% - 20px);
   padding: 10px;
-  border: 1px solid #5e35b1; /* Purple border */
+  border: 1px solid #6a1b9a; /* Dark purple border */
   border-radius: 5px;
   outline: none;
   font-size: 16px;
@@ -40,7 +40,7 @@ input[type="password"] {
 
 input[type="email"]:focus,
 input[type="password"]:focus {
-  border-color: #512da8; /* Darker shade of purple on focus */
+  border-color: #4a148c; /* Darker purple on focus */
 }
 
 .button-container {
@@ -48,7 +48,7 @@ input[type="password"]:focus {
 }
 
 #login-button {
-  background-color: #5e35b1; /* Purple background */
+  background-color: #8e24aa; /* Medium purple background */
   color: #ffffff; /* White text */
   padding: 10px 20px;
   border: none;
@@ -59,12 +59,12 @@ input[type="password"]:focus {
 }
 
 #login-button:hover {
-  background-color: #512da8;
+  background-color: #7b1fa2; /* Darker shade of purple on hover */
 }
 
 #response-message {
   padding: 10px;
-  background-color: #f44336;
+  background-color: #c2185b; /* Strong, vivid purple for error messages */
   color: white;
   text-align: center;
   border-radius: 5px;
@@ -77,7 +77,7 @@ input[type="password"]:focus {
 
 /* Button for registration */
 #to-registration-btn {
-  background-color: #5e35b1; /* Purple background */
+  background-color: #8e24aa; /* Medium purple background */
   color: #ffffff; /* White text */
   border: none;
   padding: 10px 20px;
@@ -86,8 +86,9 @@ input[type="password"]:focus {
   font-size: 16px;
   transition: background-color 0.3s ease;
   margin-top: 10px;
+  margin-left: 130px;
 }
 
 #to-registration-btn:hover {
-  background-color: #512da8; /* Darker shade on hover */
+  background-color: #7b1fa2; /* Darker purple on hover */
 }
