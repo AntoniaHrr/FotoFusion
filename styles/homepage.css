@@ -1,6 +1,5 @@
 @import url("./navbar.css");
 
-/* General Styles */
 .tc {
   text-align: center;
 }
@@ -33,7 +32,7 @@ a {
 }
 
 a:hover {
-  color: #16a085;
+  color: #801094;
 }
 
 .bb {
