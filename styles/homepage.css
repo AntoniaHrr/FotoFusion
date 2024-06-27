@@ -107,3 +107,21 @@ body {
   flex-direction: column;
   gap: 180px;
 }
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #7d0086;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
